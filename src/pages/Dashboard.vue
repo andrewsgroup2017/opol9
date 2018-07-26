@@ -2,51 +2,49 @@
   <div id="pageDashboard">
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
-        <!-- mini statistic start -->
-        <v-flex lg3 sm6 xs12>
+        <!-- <v-flex lg3 sm6 xs12>
           <mini-statistic
             icon="fa fa-facebook"
             title="100+"
             sub-title="Likes"
-            color="indigo"      
+            color="indigo"
           >
-          </mini-statistic>  
+          </mini-statistic>
         </v-flex>
         <v-flex lg3 sm6 xs12>
           <mini-statistic
             icon="fa fa-google"
             title="150+"
             sub-title="Connections"
-            color="red"      
+            color="red"
           >
-          </mini-statistic>           
-        </v-flex>          
+          </mini-statistic>
+        </v-flex>
         <v-flex lg3 sm6 xs12>
           <mini-statistic
             icon="fa fa-twitter"
             title="200+"
             sub-title="Followers"
-            color="light-blue"      
+            color="light-blue"
           >
-          </mini-statistic>            
-        </v-flex>        
+          </mini-statistic>
+        </v-flex>
         <v-flex lg3 sm6 xs12>
           <mini-statistic
             icon="fa fa-instagram"
             title="50+"
             sub-title="Shots"
-            color="purple"      
+            color="purple"
           >
-          </mini-statistic>             
-        </v-flex>   
-        <!-- mini statistic  end -->   
+          </mini-statistic>
+        </v-flex>
         <v-flex lg8 sm12 xs12>
           <v-widget title="Site Traffic" content-bg="white">
             <v-btn icon slot="widget-header-action">
               <v-icon class="text--secondary">refresh</v-icon>
             </v-btn>
             <div slot="widget-content">
-                <e-chart 
+                <e-chart
                 :path-option="[
                   ['dataset.source', siteTrafficData],
                   ['color', [color.lightBlue.base, color.green.lighten1]],
@@ -66,14 +64,14 @@
                 height="400px"
                 width="100%"
                 >
-                </e-chart>     
+                </e-chart>
             </div>
-          </v-widget>  
+          </v-widget>
         </v-flex>
         <v-flex lg4 sm12 xs12>
           <v-widget title="Top Location" content-bg="white">
             <div slot="widget-content">
-                <e-chart 
+                <e-chart
                 :path-option="[
                   ['dataset.source', locationData],
                   ['legend.bottom', '0'],
@@ -81,21 +79,20 @@
                   ['xAxis.show', false],
                   ['yAxis.show', false],
                   ['series[0].type', 'pie'],
-                  ['series[0].avoidLabelOverlap', true],         
-                  ['series[0].radius', ['50%', '70%']],                      
+                  ['series[0].avoidLabelOverlap', true],
+                  ['series[0].radius', ['50%', '70%']],
                 ]"
                 height="400px"
                 width="100%"
                 >
-                </e-chart>     
+                </e-chart>
             </div>
-          </v-widget>  
+          </v-widget>
         </v-flex>
-        <!-- social/weather card start -->
         <v-flex lg4 sm12 xs12>
           <profile-card>
           </profile-card>
-        </v-flex>        
+        </v-flex>
         <v-flex lg4 sm12 xs12>
           <box-chart
             card-color="indigo"
@@ -117,11 +114,10 @@
             gradient
             type="area"
           >
-          </box-chart>          
+          </box-chart>
         </v-flex>
-        <!-- statistic section -->
         <v-flex lg4 sm12 xs12>
-          <linear-statistic 
+          <linear-statistic
             title="Sales"
             sub-title="Sales increase"
             icon="trending_up"
@@ -136,7 +132,7 @@
             color="pink"
             :value="30"
           >
-          </linear-statistic>          
+          </linear-statistic>
           <linear-statistic class="my-4"
             title="Revenue"
             sub-title="Revenue increase"
@@ -144,7 +140,7 @@
             color="primary"
             :value="50"
           >
-          </linear-statistic>          
+          </linear-statistic>
           <linear-statistic class="mt-4"
             title="Cost"
             sub-title="Cost reduce"
@@ -152,9 +148,8 @@
             color="orange"
             :value="25"
           >
-          </linear-statistic>          
+          </linear-statistic>
         </v-flex>
-        <!-- Circle statistic -->
         <v-flex lg4 sm12 xs12 v-for="(item,index) in trending" :key="'c-trending'+index">
           <circle-statistic
             :title="item.subheading"
@@ -164,9 +159,8 @@
             :color="item.linear.color"
             :value="item.linear.value"
           >
-          </circle-statistic>            
-        </v-flex>    
-        <!-- acitivity/chat widget -->
+          </circle-statistic>
+        </v-flex>
         <v-flex lg6 sm12 xs12>
           <chat-window height="308px"></chat-window>
         </v-flex>
@@ -183,16 +177,16 @@
                     <div class="py-2 text--secondary" v-html="item.text"></div>
                   </div>
                 </li>
-              </ol>              
+              </ol>
             </div>
-          </v-widget>          
+          </v-widget>
         </v-flex>
         <v-flex lg7 sm12 xs12>
           <plain-table></plain-table>
         </v-flex>
         <v-flex lg5 sm12 xs12>
           <plain-table-order></plain-table-order>
-        </v-flex>               
+        </v-flex>                -->
       </v-layout>
     </v-container>
   </div>
@@ -200,40 +194,40 @@
 
 <script>
 import API from '@/api';
-import EChart from '@/components/chart/echart';
-import MiniStatistic from '@/components/widgets/statistic/MiniStatistic';
-import PostListCard from '@/components/widgets/card/PostListCard';
-import ProfileCard from '@/components/widgets/card/ProfileCard';
-import PostSingleCard from '@/components/widgets/card/PostSingleCard';
-import WeatherCard from '@/components/widgets/card/WeatherCard';
-import PlainTable from '@/components/widgets/list/PlainTable';
-import PlainTableOrder from '@/components/widgets/list/PlainTableOrder';
-import VWidget from '@/components/VWidget';
-import Material from 'vuetify/es5/util/colors';
-import VCircle from '@/components/circle/VCircle';
-import BoxChart from '@/components/widgets/chart/BoxChart';
-import ChatWindow from '@/components/chat/ChatWindow';
-import CircleStatistic from '@/components/widgets/statistic/CircleStatistic';
-import LinearStatistic from '@/components/widgets/statistic/LinearStatistic';
+// import EChart from '@/components/chart/echart';
+// import MiniStatistic from '@/components/widgets/statistic/MiniStatistic';
+// import PostListCard from '@/components/widgets/card/PostListCard';
+// import ProfileCard from '@/components/widgets/card/ProfileCard';
+// import PostSingleCard from '@/components/widgets/card/PostSingleCard';
+// import WeatherCard from '@/components/widgets/card/WeatherCard';
+// import PlainTable from '@/components/widgets/list/PlainTable';
+// import PlainTableOrder from '@/components/widgets/list/PlainTableOrder';
+// import VWidget from '@/components/VWidget';
+// import Material from 'vuetify/es5/util/colors';
+// import VCircle from '@/components/circle/VCircle';
+// import BoxChart from '@/components/widgets/chart/BoxChart';
+// import ChatWindow from '@/components/chat/ChatWindow';
+// import CircleStatistic from '@/components/widgets/statistic/CircleStatistic';
+// import LinearStatistic from '@/components/widgets/statistic/LinearStatistic';
 export default {
   components: {
-    VWidget,
-    MiniStatistic,
-    ChatWindow,
-    VCircle,
-    WeatherCard,
-    PostSingleCard,
-    PostListCard,
-    ProfileCard,
-    EChart,
-    BoxChart,
-    CircleStatistic,
-    LinearStatistic,
-    PlainTable,
-    PlainTableOrder    
+    // VWidget,
+    // MiniStatistic,
+    // ChatWindow,
+    // VCircle,
+    // WeatherCard,
+    // PostSingleCard,
+    // PostListCard,
+    // ProfileCard,
+    // EChart,
+    // BoxChart,
+    // CircleStatistic,
+    // LinearStatistic,
+    // PlainTable,
+    // PlainTableOrder
   },
   data: () => ({
-    color: Material,
+    // color: Material,
     selectedTab: 'tab-1',
     linearTrending: [
       {
@@ -278,7 +272,7 @@ export default {
           color: 'info'
         }
       }
-    ],    
+    ],
     trending: [
       {
         subheading: 'Email',
@@ -293,7 +287,7 @@ export default {
           value: 15,
           color: 'info'
         }
-      },        
+      },
       {
         subheading: 'Tasks',
         headline: '90%',
@@ -307,7 +301,7 @@ export default {
           value: 90,
           color: 'success'
         }
-      },        
+      },
       {
         subheading: 'Issues',
         headline: '100%',
@@ -321,8 +315,8 @@ export default {
           value: 100,
           color: 'error'
         }
-      },        
-    ]    
+      },
+    ]
   }),
   computed: {
     activity () {
