@@ -5,7 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "npm run electron-serve",
+    "prod": "npm run electron-prod",
+    "electron": "electron .",
+    "electron-builder": "electron-builder",
+    "electron-serve": "vue-cli-service electron-serve",
+    "electron-prod": "vue-cli-service electron-prod"
   },
   "dependencies": {
     "register-service-worker": "^1.0.0",
@@ -19,9 +25,13 @@
     "@vue/cli-plugin-pwa": "^3.0.0-rc.10",
     "@vue/cli-service": "^3.0.0-rc.10",
     "@vue/eslint-config-prettier": "^3.0.0-rc.10",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.18.0",
+    "electron-devtools-installer": "^2.2.4",
     "lint-staged": "^7.2.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-vuetify-electron": "^0.0.7",
     "vue-template-compiler": "^2.5.16"
   },
   "eslintConfig": {
@@ -60,5 +70,47 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "main": "./electron/index.js",
+  "author": {
+    "name": "Canh Kieu",
+    "email": "canhkieu@azwebplus.com"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "productName": "Electron App",
+    "copyright": "Copyright © 2018",
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/*",
+      "build/icons/icon.*"
+    ],
+    "mac": {
+      "icon": "build/icons/icon.icns"
+    },
+    "win": {
+      "icon": "build/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icons"
+    }
   }
 }
