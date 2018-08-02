@@ -1,0 +1,17 @@
+{
+    "_key_id": 469458,
+    "_id": 36548,
+    "name": "openwhisk",
+    "description": "openwhisk",
+    "event_handlers": [
+        {
+            "_id": 36250,
+            "name": "openwhisk",
+            "event": "js-after-publish",
+            "channels": "mqtt",
+            "file": "js-after-publish/openwhisk.js",
+            "output": "blocks-output-Vc4vQRNNq1SwcgkgJ1pW.2948411290113497",
+            "test": "js-after-publish/test/openwhisk.test.js"
+        }
+    ]
+}

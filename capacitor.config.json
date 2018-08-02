@@ -1,0 +1,6 @@
+{
+	"appId": "com.andrewsgroup.app",
+	"appName": "AndrewsAdmin",
+	"bundledWebRuntime": false,
+	"webDir": "dist"
+}
